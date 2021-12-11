@@ -1,3 +1,3 @@
 defmodule Stoobz.Mailer do
-    use Swoosh.Mailer, otp_app: :stoobz
+  use Swoosh.Mailer, otp_app: :stoobz
 end
