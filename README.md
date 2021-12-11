@@ -1,6 +1,6 @@
 # Stoobz
 
-![Elixir workflow](https://github.com/jstoobz/stoobz/actions/workflows/elixir.yml/badge.svg)
+[![CI](https://github.com/jstoobz/stoobz/actions/workflows/ci.yml/badge.svg)](https://github.com/jstoobz/stoobz/actions/workflows/ci.yml)
 
 ## Up and Running
 
