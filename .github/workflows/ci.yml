@@ -17,7 +17,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: postgres
         image: postgres:14.1
-        ports: ["5432:5432"]
+        ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -30,8 +30,8 @@ jobs:
         uses: erlef/setup-beam@988e02bfe678367a02564f65ca2e37726dc0268f
 
         with:
-          elixir-version: "1.13.0" # Define the elixir version [required]
-          otp-version: "24.1.7" # Define the OTP version [required]
+          elixir-version: '1.13.0' # Define the elixir version [required]
+          otp-version: '24.1.7' # Define the OTP version [required]
       - name: Restore dependencies cache
         uses: actions/cache@v2
         with:
