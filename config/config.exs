@@ -8,7 +8,8 @@
 import Config
 
 config :stoobz,
-  ecto_repos: [Stoobz.Repo]
+  ecto_repos: [Stoobz.Repo],
+  generators: [binary_id: true]
 
 # Configures the endpoint
 config :stoobz, StoobzWeb.Endpoint,
