@@ -13,8 +13,13 @@ defmodule Stoobz.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
-
-      # Docs
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
       name: "Stoobz",
       source_url: "https://github.com/jstoobz/stoobz",
       homepage_url: "https://github.com/jstoobz/stoobz",
@@ -61,6 +66,7 @@ defmodule Stoobz.MixProject do
 
       ## Additional Packages
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.14.4", only: :test},
       {:ex_doc, "~> 0.26.0", only: :dev, runtime: false}
     ]
   end
@@ -85,8 +91,8 @@ defmodule Stoobz.MixProject do
     [
       main: "README",
       logo: "priv/static/images/phoenix.png",
-      extras: ["README.md"],
-      source_ref: "v#{@version}"
+      source_ref: "v#{@version}",
+      extras: ["README.md"]
     ]
   end
 end
