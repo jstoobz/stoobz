@@ -13,6 +13,11 @@ defmodule Stoobz.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      dialyzer: dialyzer(),
+      docs: docs(),
+      name: "Stoobz",
+      source_url: "https://github.com/jstoobz/stoobz",
+      homepage_url: "https://github.com/jstoobz/stoobz",
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         coveralls: :test,
@@ -20,10 +25,6 @@ defmodule Stoobz.MixProject do
         "coveralls.post": :test,
         "coveralls.html": :test
       ],
-      name: "Stoobz",
-      source_url: "https://github.com/jstoobz/stoobz",
-      homepage_url: "https://github.com/jstoobz/stoobz",
-      docs: docs()
     ]
   end
 
@@ -67,7 +68,8 @@ defmodule Stoobz.MixProject do
       ## Additional Packages
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.14.4", only: :test},
-      {:ex_doc, "~> 0.26.0", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.26.0", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 
@@ -84,6 +86,12 @@ defmodule Stoobz.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"]
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
     ]
   end
 
