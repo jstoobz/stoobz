@@ -1,16 +1,24 @@
 defmodule Stoobz.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+
   def project do
     [
       app: :stoobz,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+
+      # Docs
+      name: "Stoobz",
+      source_url: "https://github.com/jstoobz/stoobz",
+      homepage_url: "https://github.com/jstoobz/stoobz",
+      docs: docs()
     ]
   end
 
@@ -49,7 +57,10 @@ defmodule Stoobz.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+
+      ## Additional Packages
+      {:ex_doc, "~> 0.26.0", only: :dev, runtime: false}
     ]
   end
 
@@ -66,6 +77,15 @@ defmodule Stoobz.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"]
+    ]
+  end
+
+  defp docs do
+    [
+      main: "README",
+      logo: "priv/static/images/phoenix.png",
+      extras: ["README.md"],
+      source_ref: "v#{@version}"
     ]
   end
 end
