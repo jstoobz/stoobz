@@ -60,6 +60,7 @@ defmodule Stoobz.MixProject do
       {:plug_cowboy, "~> 2.5"},
 
       ## Additional Packages
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.26.0", only: :dev, runtime: false}
     ]
   end
