@@ -42,7 +42,10 @@ jobs:
       - name: Restore Dependencies Cache
         uses: actions/cache@v2
         with:
-          path: deps
+          path: |
+            deps
+            _build
+            priv/plts
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix-
 
@@ -59,7 +62,7 @@ jobs:
         run: mix credo
 
       - name: Run Tests
-        env:
-          MIX_ENV: test
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mix coveralls.github
+        run: mix coveralls
+
+      - name: Run Dialyzer
+        run: mix dialyzer
